@@ -36,7 +36,7 @@ def get_tweets(screen_name):
         allTweets.extend(newTweets)
 
         # update the id of the oldest tweet by one less
-        oldest = allTweets[-1].id - 1
+        previousTweet = allTweets[-1].id - 1
 
     # write tweet objects to JSON file
     file = open('tweet.json', 'wb')
