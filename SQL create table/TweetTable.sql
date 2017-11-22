@@ -1,7 +1,7 @@
 CREATE TABLE Tweet
 (
 Text_ID int NOT NULL PRIMARY KEY,
-User_ID int NOT NULL,
+User_ID int NULL,
 Message varchar(255) NOT NULL,
 DateCreated DATETIME NOT NULL,
 ST varchar(32) NOT NULL, -- Source of text
