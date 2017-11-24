@@ -7,13 +7,27 @@ import db.helper as connection
 
 
 # initalize server
-app = Flask(__name__, template_folder='views', static_folder='public')
+app = Flask(__name__, template_folder='web/pages', static_folder='web/vendor')
 api = Api(app)
 app.config['SECRET_KEY'] = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 CsrfProtect(app)
 
 # create connection object and get data for teams and players
 db = connection.Connection()
+
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    # class SelectFilterForm(Form):
+    #     teams = db.get_users()
+    #     name = SelectField(coerce=int, choices=teams, default=1610612737L)
+    # form = SelectFilterForm()
+    # print(form.errors)
+    # # handle post request in form
+    # if form.validate_on_submit():
+    #     session['TEAM_ID'] = form.name.data
+    #     return redirect('/player')
+    return render_template("index.html")
 
 # @app.route('/', methods=['GET', 'POST'])
 # def index():
@@ -26,7 +40,7 @@ db = connection.Connection()
 #     if form.validate_on_submit():
 #         session['TEAM_ID'] = form.name.data
 #         return redirect('/player')
-#     return render_template("index.html", form=form)
+#     return render_template("index.html",form=form)
 
 # @app.route('/player', methods=['GET','POST'])
 # def player():

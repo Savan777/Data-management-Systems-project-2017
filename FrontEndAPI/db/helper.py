@@ -2,7 +2,7 @@ import psycopg2
 
 class Connection:
     def __init__(self):
-        con = psycopg2.connect(database='Twitter', user='root', host='localhost', password='root')
+        con = psycopg2.connect(database='TwitterBackup', user='root', host='localhost', password='root')
         self.cur = con.cursor()
 
     def get_user(self, user_id):
