@@ -48,3 +48,7 @@ class Connection:
     def get_totalTweets(self):
         self.cur.execute('select COUNT(text_id) FROM tweet')
         return self.cur.fetchall()
+
+    def get_tweets(self,tweet_id):
+        self.cur.execute('select * from tweet where "text_id" = %s',[tweet_id])
+        return self.cur.fetchall()
