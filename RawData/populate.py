@@ -10,13 +10,13 @@ class Populate:
 
     def populate(self):
         #reads data from csv file
-        dataframe = pd.read_csv('data.csv', usecols=['country', 'datecreated', 'displayname', 'favourites_count', 'followers_count', 'friends_count', 'lt', 'profileaddress', 'retweet_count', 'st', 'summary', 'message', 'text_id', 'user_id'])
+        dataframe = pd.read_csv('data.csv', usecols=['country', 'datecreated', 'displayname', 'favourites_count', 'followers_count', 'friends_count', 'hashtags','lt', 'profileaddress', 'retweet_count', 'st', 'summary', 'message', 'text_id', 'user_id'])
 
         #selecting required columns from dataframe
         userframe = dataframe.loc[:, ['user_id', 'displayname', 'summary', 'followers_count', 'friends_count', 'profileaddress']]
         tweetframe = dataframe.loc[:, ['text_id', 'user_id', 'message', 'datecreated', 'st', 'lt']]
         filterframe = dataframe.loc[:, ['text_id', 'country', 'favourites_count', 'retweet_count']]
-        hashtagframe = dataframe.loc[:, ['text_id']]
+        hashtagframe = dataframe.loc[:, ['text_id', 'hashtags']]
 
         #writing to database, dtype is datatype dont need it but just put it there cause it works
         filterframe.to_sql("filter", con=self.engine, if_exists='replace', index=False)
