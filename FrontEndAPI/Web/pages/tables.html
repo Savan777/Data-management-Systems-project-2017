@@ -1,42 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "_base.html" %}
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Twitter API</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-    <!-- DataTables CSS -->
-    <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-
-    <!-- DataTables Responsive CSS -->
-    <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
+{% block content %}
 
 <body>
 
@@ -97,19 +61,58 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>country</th>
-                                        <th>datecreated</th>
-                                        <th>displayname</th>
-                                        <th>favourites_count</th>
-                                        <th>followers_count</th>
-										<th>friends_count</th>
-										<th>It</th>
-										<th>message</th>
-										<th>profileaddress</th>
-										<th>retweet_count</th>
-										<th>st</th>
-										<th>summary</th>
-										<th>text_id</th>
+										<input disabled id="country" type="text">
+											{{ country }}
+										</input>
+                                        <th for ="country">Country</th>
+										<input disabled id="datecreated" type="text">
+											{{ datacreated }}
+										</input>
+                                        <th for="datacreated">Date Created</th>
+										<input disabled id="displayname" type="text">
+											{{ displayname }}
+										</input>
+                                        <th for="displayname">Display Name</th>
+										<input disabled id="favourites_count" type="text">
+											{{ favourites_count }}
+										</input>
+                                        <th for="favourites_count">Favourites Count</th>
+										<input disabled id="followers_count" type="text">
+											{{ followers_count }}
+										</input>
+                                        <th for="followers_count">Followers Count</th>
+										<input disabled id="friends_count" type="text">
+											{{ friends_count }}
+										</input>
+										<th for="friends_count">friends_count</th>
+										<input disabled id="Lt" type="text">
+											{{ Lt }}
+										</input>
+										<th for="Lt">Location of Tweet</th>
+										<input disabled id="message" type="text">
+											{{ message }}
+										</input>
+										<th for="message">message</th>
+										<input disabled id="profileaddress" type="text">
+											{{ profileaddress }}
+										</input>
+										<th for="profileaddress">Profile Address</th>
+										<input disabled id="retweet_count" type="text">
+											{{ retweet_count }}
+										</input>
+										<th for="retweet_count">retweet_count</th>
+										<input disabled id="st" type="text">
+											{{ st }}
+										</input>
+										<th for="st">Source of Tweet</th>
+										<input disabled id="summary" type="text">
+											{{ summary }}
+										</input>
+										<th for="summary">Summary</th>
+										<input disabled id="text_id" type="text">
+											{{ text_id }}
+										</input>
+										<th for="text_id">Text Id</th>
                                     </tr>
                                 </thead>
                                 
@@ -165,4 +168,4 @@
 
 </body>
 
-</html>
+{% endblock %}
