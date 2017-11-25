@@ -18,16 +18,14 @@ db = connection.Connection()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    # class SelectFilterForm(Form):
-    #     teams = db.get_users()
-    #     name = SelectField(coerce=int, choices=teams, default=1610612737L)
-    # form = SelectFilterForm()
-    # print(form.errors)
-    # # handle post request in form
-    # if form.validate_on_submit():
-    #     session['TEAM_ID'] = form.name.data
-    #     return redirect('/player')
     return render_template("index.html")
+
+@app.route('/get_filter', methods=['POST'])
+def get_filter():
+    filter = request.form['filter']
+    text_id = 933291745722351617
+    tweets = db.get_tweets(text_id)
+    return jsonify(tweets)
 
 # @app.route('/', methods=['GET', 'POST'])
 # def index():
