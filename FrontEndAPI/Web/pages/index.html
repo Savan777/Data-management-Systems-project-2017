@@ -48,8 +48,8 @@
             </div>
             <div class="panel-body">
               <div class="col-lg-6">
-                <form action="{{%20url_for('get_filter')%20}}" method="post"
-                role="form">
+                <form action="{{url_for('get_filter')}}" method="post"
+                role="form" name="filter_form">
                   <fieldset>
                     {{ form.csrf_token }} {{ form.name() }}
                     <label>Filter</label> <select class="form-control" multiple
