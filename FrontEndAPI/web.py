@@ -22,10 +22,10 @@ def index():
 
 @app.route('/get_filter', methods=['POST'])
 def get_filter():
-    filter = request.form['filter']
+    filter_form = request.form['filter']
     text_id = 933291745722351617
     tweets = db.get_tweets(text_id)
-    return jsonify(tweets)
+    return render_template("tables.html",form=filter_form)
 
 # @app.route('/', methods=['GET', 'POST'])
 # def index():
