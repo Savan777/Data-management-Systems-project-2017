@@ -1,0 +1,15 @@
+option:disabled,.dropdown-content li>a, .dropdown-content li>span {
+    color: blue;
+}
+
+.select-wrapper input.select-dropdown{
+    color: white;
+}
+
+button.btn.btn-success{
+	background-color: black;
+}
+
+.btn, .btn-large {
+    background-color: black;
+}

@@ -7,10 +7,11 @@ import db.helper as connection
 
 
 # initalize server
-app = Flask(__name__, template_folder='web/pages', static_folder='web/vendor')
+app = Flask(__name__, template_folder='Web/pages', static_folder='public')
 api = Api(app)
 app.config['SECRET_KEY'] = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 CsrfProtect(app)
+
 
 # create connection object and get data for teams and players
 db = connection.Connection()
@@ -18,46 +19,88 @@ db = connection.Connection()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template("index.html")
+    class SelectUserForm(Form):
+        users = db.get_user()
+        name = SelectField(coerce=int, choices=users, default=25073877)
 
-@app.route('/get_filter', methods=['POST'])
-def get_filter():
-    filter_form = request.form['filter']
-    text_id = 933291745722351617
-    tweets = db.get_tweets(text_id)
-    return render_template("tables.html",form=filter_form)
+    form = SelectUserForm()
 
-# @app.route('/', methods=['GET', 'POST'])
-# def index():
-#     class SelectTeamForm(Form):
-#         teams = db.get_teams()
-#         name = SelectField(coerce=int, choices=teams, default=1610612737L)
-#     form = SelectTeamForm()
-#     print(form.errors)
-#     # handle post request in form
-#     if form.validate_on_submit():
-#         session['TEAM_ID'] = form.name.data
-#         return redirect('/player')
-#     return render_template("index.html",form=form)
+    print(form.errors)
 
-# @app.route('/player', methods=['GET','POST'])
-# def player():
-#     class SelectPlayerForm(Form):
-#         team_id = session['TEAM_ID']
-#         players = db.get_players(team_id)
-#         name = SelectField(coerce=int, choices=players)
-#     form = SelectPlayerForm()
-#     # handle post request in form
-#     if form.validate_on_submit():
-#         session['PLAYER_ID'] = form.name.data
-#         return redirect('/stats')
-#     return render_template("player.html", form=form)
+    # handle post request in form
+    if form.validate_on_submit():
+        session['user_id'] = form.name.data #gets user selected option
+        print session['user_id'] #user selected input value can be used for compare
+        return redirect('/filter')
 
-# @app.route('/stats', methods=['POST', 'GET'])
-# def stats():
-#     player_id = session['PLAYER_ID']
-#     stats = db.get_stats(player_id)[0]
-#     return render_template("stats.html", name=stats[1], blocks=stats[9], drfgm=stats[11], drfga=stats[12], drfgpct=stats[13])
+    return render_template("index.html", form=form)
+
+
+@app.route('/filter', methods=['GET','POST'])
+def filter():
+    class SelectFilterForm(Form):
+        user_id = session['user_id']
+        filters = db.get_all()
+        name = SelectField(coerce=int, choices=filters)
+
+    form = SelectFilterForm()
+
+    # handle post request in form
+    if form.validate_on_submit():
+        session['filter_id'] = form.name.data
+        print session['filter_id']
+        return redirect('/table')
+
+    return render_template("filter.html", form=form)
+
+
+@app.route('/tables', methods=['POST', 'GET'])
+def tables():
+    filter_id = session['filter_id']
+    stats = db.get_all()[0]
+
+    if filter_id == 1:
+        #get view 1
+        #stats = db.get_stats(player_id)[0]
+        return render_template("tables.html", name=stats[1], blocks=stats[9], stl=stats[8], drfgm=stats[11], drfga=stats[12], drfgpct=stats[13])
+
+    elif filter_id == 2:
+        #get view 2
+        # stats = db.get_stats(player_id)[0]
+        return
+    elif filter_id == 3:
+        # get view 3
+        # stats = db.get_stats(player_id)[0]
+        return
+    elif filter_id == 4:
+        # get view 4
+        # stats = db.get_stats(player_id)[0]
+        return
+    elif filter_id == 5:
+        # get view 5
+        # stats = db.get_stats(player_id)[0]
+        return
+    elif filter_id == 6:
+        # get view 6
+        # stats = db.get_stats(player_id)[0]
+        return
+    elif filter_id == 7:
+        # get view 7
+        # stats = db.get_stats(player_id)[0]
+        return
+    elif filter_id == 8:
+        # get view 8
+        # stats = db.get_stats(player_id)[0]
+        return
+    elif filter_id == 9:
+        # get view 9
+        # stats = db.get_stats(player_id)[0]
+        return
+    elif filter_id == 10:
+        # get view 10
+        # stats = db.get_stats(player_id)[0]
+        return
+
 
 # create simple api that takes in id and response with stats of said player
 # ex http://localhost:5000/api/201960
