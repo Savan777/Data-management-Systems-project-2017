@@ -41,12 +41,15 @@ def filter():
         name = SelectField(coerce=int, choices=filters)
     form = SelectFilterForm()
     # handle post request in form
-    if form.validate_on_submit():
+    if form.is_submitted():
         session['filter_id'] = form.name.data
+        if (session['filter_id'] == None):
+            session['filter_id'] = 1
         print "The FILTER ID is -----------------"
         print session['filter_id']
         print "The FILTER ID is -----------------"
         return redirect('/tables')
+    print " NO FILTER ID WAS FOUND"
     return render_template("filter.html", form=form)
 
 @app.route('/tables', methods=['GET', 'POST'])
