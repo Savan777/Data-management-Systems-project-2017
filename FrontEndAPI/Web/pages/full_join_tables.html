@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<title> Full Join Tables </title>
+	</head>
+	<body>
+		<table style="width:100%">
+			<thead>
+				<tr>
+					<th>Location of Tweet</th>
+				</tr>
+				{% for row in join_table %}
+				<tr>
+					<td>{{  row[0]  }}</td>
+				</tr>
+				{% endfor %}
+			</thead>
+		</table>
+	</body>
+</html>

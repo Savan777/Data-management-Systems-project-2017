@@ -5,12 +5,12 @@ class Connection:
         con = psycopg2.connect(database='TwitterBackup', user='root', host='localhost', password='root')
         self.cur = con.cursor()
 
-    def get_user(self, user_id):
-        self.cur.execute('select "user_id", "displayname" from users where "user_id" = %s')
+    def get_user(self):
+        self.cur.execute('select "user_id", "displayname" from users')
         return self.cur.fetchall()
 
     def get_all(self):
-        self.cur.execute('select * from filter as F INNER JOIN tweet as T ON F.text_id = T.text_id INNER JOIN users as U ON T.user_id = user_id')
+        self.cur.execute('select * from filter as F INNER JOIN tweet as T ON F.text_id = T.text_id INNER JOIN users as U ON T.user_id = U.user_id')
         return  self.cur.fetchall()
 
     def get_Names(self):
@@ -22,7 +22,7 @@ class Connection:
         return self.cur.fetchall()
 
     def get_locationOfTweet(self):
-        self.cur.execute('select st from tweet FULL OUTER JOIN users ON tweet.text_id = users.text_id')
+        self.cur.execute('select st from tweet FULL OUTER JOIN users ON tweet.text_id = users.user_id')
         return self.cur.fetchall()
 
     def get_userid(self):
@@ -30,7 +30,7 @@ class Connection:
         return self.cur.fetchall()
 
     def get_chinaTweet(self):
-        self.cur.execute('select message FROM tweet WHERE message LIKE '%China%'')
+        self.cur.execute("select message FROM tweet WHERE message LIKE '%China%'")
         return self.cur.fetchall()
 
     def get_averageRetweet(self):

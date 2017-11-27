@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<title> Tables </title>
+	</head>
+	<body>
+		<table style="width:100%">
+			<thead>
+				<tr>
+					<th>Text Id</th>
+					<th>Country</th>
+					<th>Favourites Count</th>
+					<th>retweet_count</th>
+					<th>User Id</th>
+					<th>message</th>
+					<th>Date Created</th>
+					<th>Source of Tweet</th>
+					<th>Location of Tweet</th>
+					<th>Display Name</th>
+					<th>Summary</th>
+					<th>Followers Count</th>
+					<th>friends_count</th>
+					<th>Profile Address</th>
+				</tr>
+				{% for row in join_table %}
+				<tr>
+					<td>{{  row[0]  }}</td>
+					<td>{{  row[1]  }}</td>
+					<td>{{  row[2]  }}</td>
+					<td>{{  row[3]  }}</td>
+					<td>{{  row[5]  }}</td>
+					<td>{{  row[6]  }}</td>
+					<td>{{  row[7]  }}</td>
+					<td>{{  row[8]  }}</td>
+					<td>{{  row[9]  }}</td>
+					<td>{{  row[11]  }}</td>
+					<td>{{  row[12]  }}</td>
+					<td>{{  row[13]  }}</td>
+					<td>{{  row[14]  }}</td>
+					<td>{{  row[15]  }}</td>
+				</tr>
+				{% endfor %}
+			</thead>
+		</table>
+	</body>
+</html>

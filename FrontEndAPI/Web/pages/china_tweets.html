@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<title> China tweets </title>
+	</head>
+	<body>
+		<h1>Tweets with the word china in it </h1>
+		{% for row in message %}
+		<p>{{  row[0]  }}</p> <br/>
+		{% endfor %}
+	</body>
+</html>
