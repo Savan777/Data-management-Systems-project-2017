@@ -19,10 +19,10 @@ class Populate:
         hashtagframe = dataframe.loc[:, ['text_id', 'hashtags']]
 
         #writing to database, dtype is datatype dont need it but just put it there cause it works
-        filterframe.to_sql("filter", con=self.engine, if_exists='replace', index=False)
-        hashtagframe.to_sql("hashtag", con=self.engine, if_exists='replace', index=False)
-        tweetframe.to_sql("tweet", con=self.engine, if_exists='replace', index=False, dtype={'text_id': BIGINT, 'user_id': INTEGER, 'message': String, 'datecreated': VARCHAR, 'st': String, 'lt': String})
-        userframe.to_sql("users", con=self.engine, if_exists='replace', index=False, dtype={'user_id': INTEGER, 'displayname': VARCHAR, 'summary': VARCHAR, 'followers_count': INTEGER, 'friends_count': INTEGER, 'profileaddress': VARCHAR})
+        filterframe.to_sql("filter", con=self.engine, if_exists='append', index=False)
+        hashtagframe.to_sql("hashtag", con=self.engine, if_exists='append', index=False)
+        tweetframe.to_sql("tweet", con=self.engine, if_exists='append', index=False, dtype={'text_id': BIGINT, 'user_id': INTEGER, 'message': String, 'datecreated': VARCHAR, 'st': String, 'lt': String})
+        userframe.to_sql("users", con=self.engine, if_exists='append', index=False, dtype={'user_id': INTEGER, 'displayname': VARCHAR, 'summary': VARCHAR, 'followers_count': INTEGER, 'friends_count': INTEGER, 'profileaddress': VARCHAR})
 
 populate = Populate()
 populate.populate()
