@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8"/>
-		<title> Tables </title>
-	</head>
-	<body>
-		<table style="width:100%">
+<head>
+<meta charset="UTF-8"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+<link rel="stylesheet" href="{{ url_for("static", filename="css/override.css") }}"><link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<title> Tables </title>
+</head>
+<style>
+
+table, th, td {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid black;
+     
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color:#f5f5f5;}
+
+</style>
+<body>
+<nav class="blue darken-2">
+   	<div class="nav-wrapper">
+     	<a class="white-text brand-logo" href="/">Join Tables</a></center>
+   	</div>
+ </nav>
+	
+		
+		<table>
 			<thead>
 				<tr>
 					<th>Text Id</th>
@@ -23,6 +50,7 @@
 					<th>friends_count</th>
 					<th>Profile Address</th>
 				</tr>
+				
 				{% for row in join_table %}
 				<tr>
 					<td>{{  row[0]  }}</td>
@@ -43,5 +71,7 @@
 				{% endfor %}
 			</thead>
 		</table>
+
+
 	</body>
 </html>
