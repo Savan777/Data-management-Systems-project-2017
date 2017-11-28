@@ -1,0 +1,17 @@
+* Twitter data collector
+
+This project served as the final design project for Data Management(SOFE 3700)
+course during the semester of *Fall2017*
+
+* To run a demo of the project
+
+ - Install *python 2.7*
+ - Install *PostgreSQL*
+ - Install *pgAdmin*
+ - Install python dependencies using =pip install -r /path/to/requirements.txt=
+ - Create a database =TwitterBackup=
+ - Use =root= as username and for password use =root=
+ - Now from Database backup folder restore the backup file, to
+   populate a sample database.
+ - Now change directory to FrontEndAPI and run the *Flask* server using =python web.py=
+ - Now you can fire up the localhost server running on the =port:5000= and use the demo
