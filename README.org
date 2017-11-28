@@ -15,3 +15,7 @@ course during the semester of *Fall2017*
    populate a sample database.
  - Now change directory to FrontEndAPI and run the *Flask* server using =python web.py=
  - Now you can fire up the localhost server running on the =port:5000= and use the demo
+
+* How to add more data into the database than the backup
+
+- Savan write stuff here
