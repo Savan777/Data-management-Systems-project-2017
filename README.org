@@ -18,9 +18,9 @@ course during the semester of *Fall2017*
 
 * How to add more data into the database than the backup
 
-- To add more data you need to run the getTweet.py file that is in the RawData folder
+- To add more data you need to run the *getTweet.py* file that is in the RawData folder
 - Once it is runed you will get an updated csv file called data.csv that is in that folder
-- You need to run the populate.py file and it will append the new tweets to the database,
-make sure that you have demo already setup.
+- You need to run the *populate.py* file and it will append the new tweets to the database,
+  make sure that you have demo already setup.
 - If you want to replace the data then you can modify the lines 22-25 in the populate.py file
-change if_exists='append' change to if_exists='replace'
+  change =if_exists = 'append'= change to =if_exists = 'replace'=
